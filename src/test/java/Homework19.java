@@ -49,7 +49,7 @@ public class Homework19 extends BaseTest {
     }
 
     private void clickPlayBtn() {
-        WebElement playBtn = driver.findElement(By.cssSelector("[data-testid='play-btn']"));
+        WebElement playBtn = driver.findElement(By.cssSelector("[data-testid='play-btn']");
         playBtn.click();
     }
 
