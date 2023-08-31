@@ -1,38 +1,33 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Homework18 extends BaseTest {
     @Test(description = "Homework 18 - playSong")
-    public void playSong() throws InterruptedException{
+    public void playSong() {
         openLoginUrl();
         enterEmail("bethany85@gmail.com");
         enterPassword("AsherDrew0717!");
         clickSubmit();
-        Thread.sleep(3000);
         clickPlayNextSongBtn();
-        clickPlayBtn();
         verifySongBar();
-
-
-
-
 
     }
 
     private void verifySongBar() {
-        WebElement songBars = driver.findElement(By.cssSelector("[alt='Sound bars']"));
+        WebElement songBars = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[alt='Sound bars']")));
         Assert.assertTrue(songBars.isDisplayed());
     }
 
-    private void clickPlayBtn() {
-        WebElement playBtn = driver.findElement(By.cssSelector("[data-testid='play-btn']"));
-        playBtn.click();
-    }
-
     private void clickPlayNextSongBtn() {
-        WebElement playNextSongBtn = driver.findElement(By.cssSelector("[title = 'Play next song']"));
+        WebElement panel = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.side.player-controls")));
+        panel.click();
+        WebElement playNextSongBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[title = 'Play next song']")));
         playNextSongBtn.click();
+        WebElement playBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-testid='play-btn']")));
+        playBtn.click();
     }
 }

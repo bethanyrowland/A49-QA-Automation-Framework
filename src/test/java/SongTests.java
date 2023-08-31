@@ -1,5 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -22,7 +23,7 @@ public class SongTests extends BaseTest {
     }
 
     private void verifySuccessMessage() {
-        WebElement successBanner = driver.findElement(By.cssSelector("[class='alertify-logs top right']"));
+        WebElement successBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class='alertify-logs top right']")));
         Assert.assertTrue(successBanner.isDisplayed());
 
     }
