@@ -9,23 +9,25 @@ public class LoginPage extends BasePage{
         super(givenDriver);
     }
 
+    By submitBtn = By.cssSelector("button[type='submit']");
+    By passwordInput = By.cssSelector("[type='password']");
+    By emailInput = By.cssSelector("[type='email']");
+
+
     public void clickSubmit() {
-        WebElement submitLogin = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
-        submitLogin.click();
+        findElement(submitBtn).click();
     }
 
     public void enterPassword(String password) {
-        WebElement passwordInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type='password']")));
-        passwordInput.click();
-        passwordInput.clear();
-        passwordInput.sendKeys(password);
+        findElement(passwordInput).click();
+        findElement(passwordInput).clear();
+        findElement(passwordInput).sendKeys(password);
     }
 
     public void enterEmail(String email) {
-        WebElement emailInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type='email']")));
-        emailInput.click();
-        emailInput.clear();
-        emailInput.sendKeys(email);
+        findElement(emailInput).click();
+        findElement(emailInput).clear();
+        findElement(emailInput).sendKeys(email);
     }
 
     public void login(){

@@ -11,19 +11,24 @@ public class HomePage extends BasePage {
         super(givenDriver);
     }
 
+    By inputNameField = By.cssSelector("[name='name']");
+    By successMessage = By.cssSelector("div.success.show");
+
+    By newPlaylistName = By.cssSelector(".playlist:nth-child(3)");
+
+
+
     public void typeNewPlaylistName(String newPlaylistName) {
-        WebElement inputNameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='name']")));
-        inputNameField.sendKeys(Keys.chord(Keys.CONTROL, "A", Keys.BACK_SPACE));
-        inputNameField.sendKeys(newPlaylistName);
-        inputNameField.sendKeys(Keys.ENTER);
+        findElement(inputNameField).sendKeys(Keys.chord(Keys.CONTROL, "A", Keys.BACK_SPACE));
+        findElement(inputNameField).sendKeys(newPlaylistName);
+        findElement(inputNameField).sendKeys(Keys.ENTER);
     }
-    public void verifySuccessMessage() {
-        WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
-        Assert.assertTrue(successMessage.isDisplayed());
+    public String verifySuccessMessage() {
+        return findElement(successMessage).getText();
     }
+
     public void doubleClickPlaylist() {
-        WebElement playlist =wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)")));
-        actions.doubleClick(playlist).perform();
+        doubleClick(newPlaylistName);
     }
 
 

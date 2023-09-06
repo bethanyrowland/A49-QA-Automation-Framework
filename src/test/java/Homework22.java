@@ -13,7 +13,7 @@ public class Homework22 extends BaseTest {
     @Test(description = "Homework 22 - POM Rename Playlist")
     public void renamePlaylist() {
         String newPlaylistName = "New Name";
-        String successMessage = "Updated playlist \"Bethan.\"";
+        String successMessage = "Updated playlist \"New Name.\"";
 
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
@@ -22,7 +22,7 @@ public class Homework22 extends BaseTest {
         loginPage.login();
         homePage.doubleClickPlaylist();
         homePage.typeNewPlaylistName(newPlaylistName);
-        homePage.verifySuccessMessage();
+        Assert.assertEquals(homePage.verifySuccessMessage(), successMessage);
 
     }
 

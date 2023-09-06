@@ -9,9 +9,9 @@ import java.time.Duration;
 import org.testng.Assert;
 
 public class BasePage {
-    WebDriver driver;
-    WebDriverWait wait;
-    Actions actions;
+    protected WebDriver driver;
+    protected WebDriverWait wait;
+    protected Actions actions;
 
     public BasePage(WebDriver givenDriver){
         driver = givenDriver;
@@ -23,5 +23,11 @@ public class BasePage {
     }
     public void quitBrowser(){
         driver.quit();
+    }
+    public WebElement findElement (By Locator){
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(Locator));
+    }
+    public void doubleClick (By locator){
+        actions.doubleClick(findElement(locator)).perform();
     }
 }
