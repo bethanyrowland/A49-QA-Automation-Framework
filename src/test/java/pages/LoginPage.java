@@ -20,19 +20,19 @@ public class LoginPage extends BasePage{
 
 
     public void clickSubmit() {
-        wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
+        findElement(submitBtn);
         submitBtn.click();
     }
 
     public void enterPassword(String password) {
-        wait.until(ExpectedConditions.elementToBeClickable(passwordInput));
+        findElement(passwordInput);
         passwordInput.click();
         passwordInput.clear();
         passwordInput.sendKeys(password);
     }
 
     public void enterEmail(String email) {
-        wait.until(ExpectedConditions.elementToBeClickable(emailInput));
+        findElement(emailInput);
         emailInput.click();
         emailInput.clear();
         emailInput.sendKeys(email);

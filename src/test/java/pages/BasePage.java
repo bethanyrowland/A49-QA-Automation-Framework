@@ -30,6 +30,9 @@ public class BasePage {
     public WebElement findElement (By Locator){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(Locator));
     }
+    public WebElement findElement (WebElement webElement){
+        return wait.until(ExpectedConditions.visibilityOf(webElement));
+    }
     public void doubleClick (By locator){
         actions.doubleClick(findElement(locator)).perform();
     }
