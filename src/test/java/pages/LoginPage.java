@@ -2,32 +2,40 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage{
     public LoginPage(WebDriver givenDriver) {
         super(givenDriver);
     }
+    @FindBy (css = "button[type='submit']")
+        WebElement submitBtn;
 
-    By submitBtn = By.cssSelector("button[type='submit']");
-    By passwordInput = By.cssSelector("[type='password']");
-    By emailInput = By.cssSelector("[type='email']");
+    @FindBy (css = "[type='password']")
+        WebElement passwordInput;
+
+    @FindBy (css = "[type='email']")
+            WebElement emailInput;
 
 
     public void clickSubmit() {
-        findElement(submitBtn).click();
+        wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
+        submitBtn.click();
     }
 
     public void enterPassword(String password) {
-        findElement(passwordInput).click();
-        findElement(passwordInput).clear();
-        findElement(passwordInput).sendKeys(password);
+        wait.until(ExpectedConditions.elementToBeClickable(passwordInput));
+        passwordInput.click();
+        passwordInput.clear();
+        passwordInput.sendKeys(password);
     }
 
     public void enterEmail(String email) {
-        findElement(emailInput).click();
-        findElement(emailInput).clear();
-        findElement(emailInput).sendKeys(email);
+        wait.until(ExpectedConditions.elementToBeClickable(emailInput));
+        emailInput.click();
+        emailInput.clear();
+        emailInput.sendKeys(email);
     }
 
     public void login(){
