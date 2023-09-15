@@ -21,12 +21,6 @@ public class BasePage {
         actions = new Actions(driver);
         PageFactory.initElements(driver, this);
     }
-    public void openLoginUrl(String url) {
-        driver.get(url);
-    }
-    public void quitBrowser(){
-        driver.quit();
-    }
     public WebElement findElement (By Locator){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(Locator));
     }
