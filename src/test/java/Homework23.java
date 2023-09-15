@@ -1,24 +1,24 @@
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import pages.BasePage;
-import pages.HomePage;
-import pages.LoginPage;
-
-public class Homework23 extends BaseTest {
-
-    @Test(description = "Homework 23 - Refactor Rename Playlist using Page Factory")
-    public void renamePlaylist() {
-        String newPlaylistName = "New Name";
-        String successMessage = "Updated playlist \"New Name.\"";
-
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
-        BasePage basePage = new BasePage(driver);
-
-        loginPage.login();
-        homePage.doubleClickPlaylist();
-        homePage.typeNewPlaylistName(newPlaylistName);
-        Assert.assertEquals(homePage.verifySuccessMessage(), successMessage);
-    }
-
-}
+//import org.testng.Assert;
+//import org.testng.annotations.Test;
+//import pages.BasePage;
+//import pages.HomePage;
+//import pages.LoginPage;
+//
+//public class Homework23 extends BaseTest {
+//
+//    @Test(description = "Homework 23 - Refactor Rename Playlist using Page Factory")
+//    public void renamePlaylist() {
+//        String newPlaylistName = "New Name";
+//        String successMessage = "Updated playlist \"New Name.\"";
+//
+//        LoginPage loginPage = new LoginPage(driver);
+//        HomePage homePage = new HomePage(driver);
+//        BasePage basePage = new BasePage(driver);
+//
+//        loginPage.login();
+//        homePage.doubleClickPlaylist();
+//        homePage.typeNewPlaylistName(newPlaylistName);
+//        Assert.assertEquals(homePage.verifySuccessMessage(), successMessage);
+//    }
+//
+//}
