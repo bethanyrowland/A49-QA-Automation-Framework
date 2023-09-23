@@ -17,6 +17,8 @@ import pages.LoginPage;
 import pages.BasePage;
 import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
+import java.util.HashMap;
 
 
 public class BaseTest {
@@ -42,11 +44,6 @@ public class BaseTest {
 //            basePage.openLoginUrl(url);
 //        }
 
-        @AfterMethod
-        public void closeBrowser () {
-            driver.quit();
-        }
-
         WebDriver setupBrowser(String browser) throws MalformedURLException {
             DesiredCapabilities caps = new DesiredCapabilities();
             String gridURL = "http://192.168.0.25:4444";
@@ -61,6 +58,8 @@ public class BaseTest {
                 case "grid-edge":
                     caps.setCapability("browserName", "edge");
                     return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), caps);
+                case "cloud":
+                    return setupLambda();
                 default:
                     return setupChrome();
             }
@@ -105,5 +104,24 @@ public class BaseTest {
         WebDriverManager.edgedriver().setup();
         driver = new EdgeDriver();
         return driver;
+    }
+    public WebDriver setupLambda() throws MalformedURLException {
+        String hubURL ="https://hub.lambdatest.com/wd/hub";
+        ChromeOptions browserOptions = new ChromeOptions();
+        browserOptions.setPlatformName("Windows 10");
+        browserOptions.setBrowserVersion("118.0");
+        HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+        ltOptions.put("username", "bethany.rowland85");
+        ltOptions.put("accessKey", "1GjL4tiCi5ztEZ2gnNpcRBlZivbeLMw9cmfBHBgi6nIjFsyCmM");
+        ltOptions.put("project", "Untitled");
+        ltOptions.put("selenium_version", "4.0.0");
+        ltOptions.put("w3c", true);
+        browserOptions.setCapability("LT:Options", ltOptions);
+        return new RemoteWebDriver(new URL(hubURL), browserOptions);
+    }
+
+    @AfterMethod
+    public void closeBrowser () {
+        driver.quit();
     }
 }
