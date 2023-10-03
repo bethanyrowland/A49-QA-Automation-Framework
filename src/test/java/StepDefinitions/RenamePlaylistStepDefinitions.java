@@ -14,6 +14,8 @@ import org.testng.Assert;
 import pages.HomePage;
 import pages.LoginPage;
 
+import java.time.Duration;
+
 
 public class RenamePlaylistStepDefinitions {
     WebDriver driver;
@@ -23,15 +25,16 @@ public class RenamePlaylistStepDefinitions {
 
 
     @Before
-    public WebDriver launchBrowser() {
+    public void launchBrowser() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-notifications");
         options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
-        return driver;
-    }
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.get("https://qa.koel.app/");
+            }
 
     @After
         public void closeBrowser() {
