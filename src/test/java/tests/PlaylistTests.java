@@ -1,12 +1,15 @@
+package tests;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.BasePage;
 import pages.HomePage;
 import pages.LoginPage;
 
-public class Homework27 extends BaseTest {
+public class PlaylistTests extends BaseTest {
 
-    @Test(description = "Homework 27 - Cucumber")
+
+    @Test(description = "renamePlaylist")
     public void renamePlaylist() {
         String newPlaylistName = "New Name";
         String successMessage = "Updated playlist \"New Name.\"";
@@ -20,5 +23,34 @@ public class Homework27 extends BaseTest {
         homePage.typeNewPlaylistName(newPlaylistName);
         Assert.assertEquals(homePage.verifySuccessMessage(), successMessage);
     }
+
+
+    @Test(description = "deletePlaylist")
+    public void deletePlaylist(){
+        String expectedPlaylistDeletedMessage = "Deleted playlist \"Bethany.\"";
+
+        openLoginUrl();
+        enterEmail("bethany85@gmail.com");
+        enterPassword("AsherDrew0717!");
+        clickSubmit();
+        clickPlaylist();
+        clickDelPlaylistBtn();
+        clickOkToDel();
+        Assert.assertEquals(getDeletedPlaylistMsg(), expectedPlaylistDeletedMessage);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
