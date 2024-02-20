@@ -1,16 +1,19 @@
 package tests;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTests extends BaseTest{
-        @Test(description = "Login with Empty Email and Password Fields")
-    public void loginEmptyEmailPassword() {
 
-        String url = "https://qa.koel.app/";
-        driver.get(url);
+    @Test
+    public void loginValidEmailPasswordTest (){
+        loginPage.loginCorrectCred();
         Assert.assertEquals(driver.getCurrentUrl(), url);
-        driver.quit();
-
+    }
+    @Test
+    public void loginEmailInvalidPassword() {
+        loginPage.enterEmail("bethany85@gmail.com");
+        loginPage.enterPassword("InvalidPassword");
+        loginPage.clickSubmit();
+        Assert.assertEquals(driver.getCurrentUrl(), url);
     }
 }

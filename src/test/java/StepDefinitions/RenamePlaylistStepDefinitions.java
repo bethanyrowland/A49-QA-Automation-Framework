@@ -45,7 +45,7 @@ public class RenamePlaylistStepDefinitions {
         @Given("I am logged in")
         public void login() {
             LoginPage loginPage = new LoginPage(driver);
-            loginPage.login();
+            loginPage.loginCorrectCred();
         }
 
         @When("I double click on playlist")

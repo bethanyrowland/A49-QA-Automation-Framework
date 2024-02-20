@@ -1,56 +1,39 @@
 package tests;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.BasePage;
-import pages.HomePage;
-import pages.LoginPage;
+
 
 public class PlaylistTests extends BaseTest {
 
-
-    @Test(description = "renamePlaylist")
+    @Test
     public void renamePlaylist() {
         String newPlaylistName = "New Name";
         String successMessage = "Updated playlist \"New Name.\"";
 
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
-        BasePage basePage = new BasePage(driver);
-
-        loginPage.login();
+        loginPage.loginCorrectCred();
         homePage.doubleClickPlaylist();
         homePage.typeNewPlaylistName(newPlaylistName);
         Assert.assertEquals(homePage.verifySuccessMessage(), successMessage);
     }
-
-
-    @Test(description = "deletePlaylist")
+    @Test
+    public void addSongToPlaylist() {
+        loginPage.loginCorrectCred();
+        loginPage.clickSubmit();
+        homePage.searchInput();
+        songsPage.clickViewAllBtn();
+        homePage.enterSongTitle();
+        songsPage.clickAddToBtn();
+        homePage.choosePlaylist();
+        homePage.verifySuccessMessage();
+    }
+    @Test
     public void deletePlaylist(){
         String expectedPlaylistDeletedMessage = "Deleted playlist \"Bethany.\"";
-
-        openLoginUrl();
-        enterEmail("bethany85@gmail.com");
-        enterPassword("AsherDrew0717!");
-        clickSubmit();
-        clickPlaylist();
-        clickDelPlaylistBtn();
-        clickOkToDel();
-        Assert.assertEquals(getDeletedPlaylistMsg(), expectedPlaylistDeletedMessage);
+        loginPage.loginCorrectCred();
+        loginPage.clickSubmit();
+        homePage.clickPlaylist();
+        playlistPage.clickDelPlaylistBtn();
+        playlistPage.clickOkToDel();
+        Assert.assertEquals(playlistPage.getDeletedPlaylistMsg(), expectedPlaylistDeletedMessage);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

@@ -16,12 +16,11 @@ public class CucumberTests extends BaseTest{
         HomePage homePage = new HomePage(driver);
         BasePage basePage = new BasePage(driver);
 
-        loginPage.login();
+        loginPage.loginCorrectCred();
         homePage.doubleClickPlaylist();
         homePage.typeNewPlaylistName(newPlaylistName);
         Assert.assertEquals(homePage.verifySuccessMessage(), successMessage);
     }
-
 }
 
 
