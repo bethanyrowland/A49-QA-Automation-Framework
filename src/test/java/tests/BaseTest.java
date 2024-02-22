@@ -32,6 +32,7 @@ public class BaseTest {
     PlaylistPage playlistPage;
     SongsPage songsPage;
 
+
     @BeforeMethod
     public void launchBrowser() {
         ChromeOptions options = new ChromeOptions();
@@ -46,7 +47,6 @@ public class BaseTest {
         songsPage = new SongsPage(driver);
         basePage.navigateToPage(url);
     }
-
 
     WebDriver setupBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
@@ -68,7 +68,6 @@ public class BaseTest {
                 return setupChrome();
         }
     }
-
     public WebDriver setupChrome() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
