@@ -14,7 +14,7 @@ public class LoginPage extends BasePage{
         submitBtn.click();
     }
     public void enterPassword(String password) {
-        WebElement passwordInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
+        WebElement passwordInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='password']")));
         passwordInput.click();
         passwordInput.clear();
         passwordInput.sendKeys(password);

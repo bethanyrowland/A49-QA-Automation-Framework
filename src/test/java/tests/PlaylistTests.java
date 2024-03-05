@@ -18,7 +18,6 @@ public class PlaylistTests extends BaseTest {
     @Test
     public void addSongToPlaylist() {
         loginPage.loginCorrectCred();
-        loginPage.clickSubmit();
         homePage.searchInput();
         songsPage.clickViewAllBtn();
         homePage.enterSongTitle();
@@ -30,7 +29,6 @@ public class PlaylistTests extends BaseTest {
     public void deletePlaylist(){
         String expectedPlaylistDeletedMessage = "Deleted playlist \"Bethany.\"";
         loginPage.loginCorrectCred();
-        loginPage.clickSubmit();
         homePage.clickPlaylist();
         playlistPage.clickDelPlaylistBtn();
         playlistPage.clickOkToDel();

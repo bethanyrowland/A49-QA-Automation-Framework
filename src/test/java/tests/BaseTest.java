@@ -1,4 +1,5 @@
 package tests;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,11 +11,9 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.BasePage;
-import pages.LoginPage;
-import pages.HomePage;
-import pages.SongsPage;
-import pages.PlaylistPage;
+import org.testng.annotations.BeforeSuite;
+import pages.*;
+
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
@@ -32,6 +31,10 @@ public class BaseTest {
     PlaylistPage playlistPage;
     SongsPage songsPage;
 
+    @BeforeSuite
+    static void setupClass() {
+        WebDriverManager.chromedriver().setup();
+    }
 
     @BeforeMethod
     public void launchBrowser() {
