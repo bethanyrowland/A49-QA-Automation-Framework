@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class PlaylistTests extends BaseTest {
 
-    @Test
+    @Test(priority = 2)
     public void renamePlaylist() {
         String newPlaylistName = "New Name";
         String successMessage = "Updated playlist \"New Name.\"";
@@ -15,7 +15,7 @@ public class PlaylistTests extends BaseTest {
         homePage.typeNewPlaylistName(newPlaylistName);
         Assert.assertEquals(homePage.verifySuccessMessage(), successMessage);
     }
-    @Test
+    @Test(priority = 1)
     public void addSongToPlaylist() {
         loginPage.loginCorrectCred();
         homePage.searchInput();
@@ -25,9 +25,9 @@ public class PlaylistTests extends BaseTest {
         homePage.choosePlaylist();
         homePage.verifySuccessMessage();
     }
-    @Test
+    @Test(priority = 3)
     public void deletePlaylist(){
-        String expectedPlaylistDeletedMessage = "Deleted playlist \"Bethany.\"";
+        String expectedPlaylistDeletedMessage = "Deleted playlist \"New Name.\"";
         loginPage.loginCorrectCred();
         homePage.clickPlaylist();
         playlistPage.clickDelPlaylistBtn();
