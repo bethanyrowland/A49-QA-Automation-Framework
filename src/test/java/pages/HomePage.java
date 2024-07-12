@@ -12,6 +12,8 @@ public class HomePage extends BasePage{
     By successMessage = By.cssSelector("div.success.show");
     By newPlaylistName = By.cssSelector(".playlist:nth-child(3)");
 
+    By welcomeMessage = By.xpath("//*[@id='homeWrapper']/header/div[2]/h1");
+
 
     public void clickPlaylist() {
         WebElement newPlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#playlists ul li:nth-child(3)")));
@@ -35,6 +37,14 @@ public class HomePage extends BasePage{
         searchInput.clear();
         searchInput.sendKeys("Dark Days");
     }
+
+    public void searchArtistInSearchField(){
+        WebElement searchArtistInSearchField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type='search']")));
+        searchArtistInSearchField.click();
+        searchArtistInSearchField.clear();
+        searchArtistInSearchField.sendKeys("Lobo Loco");
+        searchArtistInSearchField.sendKeys(Keys.RETURN);
+    }
     public void choosePlaylist() {
         WebElement choosePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#songResultsWrapper li:nth-child(5)")));
         choosePlaylist.click();
@@ -46,5 +56,26 @@ public class HomePage extends BasePage{
     public void clickViewAllBtn() {
         WebElement clickViewAllBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[data-test='view-all-songs-btn']")));
         clickViewAllBtn.click();
+    }
+    public void clickAllSongsTab() {
+        WebElement clickAllSongsTab = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#sidebar > section.music > ul > li:nth-child(3) > a")));
+        clickAllSongsTab.click();
+    }
+
+    public void verifyWelcomeMessage(){
+        findElement(welcomeMessage).getText();
+    }
+
+    public void enterTextInSearchField(){
+        WebElement searchField = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[type='search']")));
+        searchField.click();
+        searchField.clear();
+        searchField.sendKeys("test");
+        searchField.sendKeys(Keys.ENTER);
+    }
+
+    public void clickOnProfile(){
+        WebElement userProfileIcon = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='userBadge']/a[1]/img")));
+        userProfileIcon.click();
     }
 }

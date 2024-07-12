@@ -24,10 +24,12 @@ public class BaseTest {
     public static WebDriver driver;
     public static Actions actions;
     public static String url = "https://qa.koel.app/";
+    public static String homeUrl = "https://qa.koel.app/#!/home";
     public static WebDriverWait wait;
     BasePage basePage;
     LoginPage loginPage;
     HomePage homePage;
+    ProfilePage profilePage;
     PlaylistPage playlistPage;
     SongsPage songsPage;
 
@@ -48,6 +50,7 @@ public class BaseTest {
         homePage = new HomePage(driver);
         playlistPage = new PlaylistPage(driver);
         songsPage = new SongsPage(driver);
+        profilePage = new ProfilePage(driver);
         basePage.navigateToPage(url);
     }
 
